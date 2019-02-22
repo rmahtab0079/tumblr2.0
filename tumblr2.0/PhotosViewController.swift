@@ -14,6 +14,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     var posts = [[String: Any]]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +63,25 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Get the cell that triggered the segue
+        let cell = sender as! UITableViewCell
+        //Get the indexPath of the selected photo
+        if let indexPath = tableView.indexPath(for: cell){
+            let post = posts[indexPath.section]
+            //Get a reference to the PhotoDetailsViewController
+            let photoDetailsViewController = segue.destination as! PhotoDetailsViewController
+            photoDetailsViewController.post = post
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
     
     
     /*
