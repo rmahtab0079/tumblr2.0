@@ -65,8 +65,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vjx-Dr-JVc">
-                                <rect key="frame" x="20" y="90" width="374" height="278"/>
+                                <rect key="frame" x="20" y="98" width="374" height="278"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="QqH-79-smb" appends="YES" id="SLL-mb-rdU"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,8 +81,62 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3K9-8M-NC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="QqH-79-smb">
+                    <connections>
+                        <action selector="onTapImage:" destination="T40-ac-RGT" id="7Xt-K8-fG6"/>
+                        <segue destination="rJa-RR-8tc" kind="presentation" identifier="zoomSegue" id="HSK-Pj-2I4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1771.0144927536232" y="136.95652173913044"/>
+            <point key="canvasLocation" x="1977" y="133"/>
+        </scene>
+        <!--Full Screen Photo View Controller-->
+        <scene sceneID="hwb-vW-iAt">
+            <objects>
+                <viewController id="rJa-RR-8tc" customClass="FullScreenPhotoViewController" customModule="tumblr2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HCB-tx-8aT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zoom " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEo-oj-dng">
+                                <rect key="frame" x="183" y="79" width="49" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3uc-d7-kNO">
+                                <rect key="frame" x="0.0" y="167" width="414" height="458"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs4-co-gi6">
+                                        <rect key="frame" x="47" y="93" width="320" height="272"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7WX-qN-7DJ">
+                                <rect key="frame" x="352" y="95" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="close:" destination="rJa-RR-8tc" eventType="touchUpInside" id="MZB-Aa-n1h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="GLJ-uk-GLj"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="gs4-co-gi6" id="uWE-68-OFs"/>
+                        <outlet property="scrollView" destination="3uc-d7-kNO" id="6bt-Y1-PB0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ydv-9v-vUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2865.217391304348" y="136.95652173913044"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="azb-8T-b9s">
